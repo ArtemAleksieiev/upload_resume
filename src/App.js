@@ -13,7 +13,7 @@ const UploadComponent = props => (
         label="Maximum size file: 5MB"
         buttonText="Choose an image"
         onChange={props.onImage}
-        imgExtension={['.jpg', '.png', '.jpeg']}
+        imgExtension={['.jpg', '.pdf', '.doc']}
         maxFileSize={5242880}
     ></ImageUploader>
   </form>
@@ -22,6 +22,7 @@ const UploadComponent = props => (
 const App = () => {
   const [progress, setProgress] = useState('getUpload');
   const [errorMessage, setErrorMessage] = useState('');
+  const [resumeLink, setResumeLink] = useState('');
   //const [url, setImageURL] = useState(undefined);
   const API_ENDPOINT = 'https://t39hcfjfn5.execute-api.us-east-2.amazonaws.com/uploads'
 
@@ -30,7 +31,6 @@ const App = () => {
     
     try {
             console.log('successImages', successImages[0]);
-            
             console.log('Upload clicked');
             // Get the presigned URL
             const response = await Axios({
@@ -39,13 +39,12 @@ const App = () => {
             });
             console.log('ResponseURL: ', response.data.uploadURL)
             let binary = atob(successImages[0].split(',')[1])
-            
             let array = []
             for (var i = 0; i < binary.length; i++) {
                 array.push(binary.charCodeAt(i))
             }
             console.log(array)
-            let blobData = new Blob([new Uint8Array(array)], {type: 'image/jpeg'})
+            let blobData = new Blob([new Uint8Array(array)], {type: 'application/pdf'})
             
             console.log('Uploading to: ', response.data.uploadURL)
             const result = await fetch(response.data.uploadURL, {
@@ -54,6 +53,7 @@ const App = () => {
             })
             console.log('Result: ', result)
             console.log(response.data.uploadURL.split('?')[0])
+            setResumeLink(response.data.uploadURL.split('?')[0]);
             setProgress('uploaded');
         } catch (error) {
             console.log('error in upload', error);
@@ -70,7 +70,12 @@ const App = () => {
         case 'uploading':
             return <h2>Uploading....</h2>;
         case 'uploaded':
-            return <h2>Uploaded</h2>;
+            return (
+              <>
+                <h2>Uploaded</h2>;
+                <h6>You can access resume by clicking this link: <a href={resumeLink}>{resumeLink}</a></h6>
+              </>
+            );
         case 'uploadError':
             return (
                 <>
@@ -83,7 +88,7 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Image Upload Website</h1>
+        <h1>Resume Upload Website</h1>
         {content()}
       </header>
     </div>
