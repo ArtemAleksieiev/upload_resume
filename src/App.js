@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ImageUploader from 'react-images-upload';
 import ReactFileReader from "react-file-reader";
 import Axios from 'axios';
 import './App.css';
@@ -8,7 +7,6 @@ const App = () => {
   const [progress, setProgress] = useState('getUpload');
   const [errorMessage, setErrorMessage] = useState('');
   const [resumeLink, setResumeLink] = useState('');
-  //const [url, setImageURL] = useState(undefined);
   const API_ENDPOINT = 'https://t39hcfjfn5.execute-api.us-east-2.amazonaws.com/uploads'
 
   const handleFiles = async (e) => {
