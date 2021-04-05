@@ -9,23 +9,19 @@ const OrderTable = ({orders}) => {
     <Table>
       <Thead>
         <Tr>
-          <Th>Adress</Th>
-          <Th>Customer</Th>
-          <Th>Description</Th>
-          <Th>Phone</Th>
-          <Th>Status</Th>
+          <Th>First Name</Th>
+          <Th>Last Name</Th>
+          <Th>Resume</Th>
           <Th style={{border: "none", background:"transparent", color:'black'}}>Edit</Th>
         </Tr>
       </Thead>
       <Tbody>
         {orders.map((order) => {
-        const { id, customer, adress, description, phone, status } = order
+        const { id, fname, lname, resume } = order
         return  <Tr key={id}>
-                <Td component="th" scope="row">{customer}</Td>
-                <Td>{adress}</Td>
-                <Td>{description}</Td>
-                <Td>{phone}</Td>
-                <Td>{status}</Td>
+                <Td component="th" scope="row">{fname}</Td>
+                <Td>{lname}</Td>
+                <Td>{resume}</Td>
                 <Td style={{border: "none"}}>
                   <Link to={`/${id}`}>
                     <button type="button" className="btn btn-outline-primary btn-sm float-center">

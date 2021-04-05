@@ -5,7 +5,7 @@ import OrderTable from './OrderTable';
 
 
 const api = axios.create({
-    baseURL: 'https://egm1k4zcb4.execute-api.us-east-2.amazonaws.com/default/CreateOrders'
+    baseURL: 'https://b38z6ro243.execute-api.us-east-2.amazonaws.com'
 })
 
 const Main = () => {
@@ -21,7 +21,7 @@ const Main = () => {
             setOrders(res.data.Items);
         });
     },[]);
-
+/*
     const handleSubmit = (e) => {
         e.preventDefault();
         if (customer && phone) {
@@ -131,6 +131,7 @@ const Main = () => {
             </>
     );
 };
+*/
 return (
         <>
         <Router>
@@ -139,11 +140,13 @@ return (
                 <OrderTable orders={orders} />
                 <Link to="/create" className="create-btn">create new order</Link>
             </Route>
+            {/*
                 <Route path="/:id" children={<Order/>}>
             </Route>
                 <Route path="/create">
                     <Create />
                 </Route>
+            */}
             </Switch>
         </Router>
         </>
