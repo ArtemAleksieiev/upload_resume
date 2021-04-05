@@ -4,7 +4,7 @@ import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 //import { BiEdit } from 'react-icons/bi';
 
-const OrderTable = ({orders}) => {
+const ResumeTable = ({records}) => {
   return (
     <Table>
       <Thead>
@@ -16,8 +16,8 @@ const OrderTable = ({orders}) => {
         </Tr>
       </Thead>
       <Tbody>
-        {orders.map((order) => {
-        const { id, fname, lname, resume } = order
+        {records.map((record) => {
+        const { id, fname, lname, resume } = record
         return  <Tr key={id}>
                 <Td component="th" scope="row">{fname}</Td>
                 <Td>{lname}</Td>
@@ -36,4 +36,4 @@ const OrderTable = ({orders}) => {
   );
 }
 
-export default OrderTable;
+export default ResumeTable;

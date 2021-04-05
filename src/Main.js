@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch, Link, useParams } from 'react-router-dom';
-import OrderTable from './OrderTable';
+import ResumeTable from './ResumeTable';
 
 
 const api = axios.create({
@@ -9,7 +9,7 @@ const api = axios.create({
 })
 
 const Main = () => {
-    const [orders, setOrders] = useState([]);
+    const [records, setRecords] = useState([]);
     const [customer, setCustomer] = useState('');
     const [adress, setAdress] = useState('');
     const [description, setDescription] = useState('');
@@ -18,7 +18,7 @@ const Main = () => {
     useEffect(() => {
         api.get('/').then(res => {
             console.log(res);
-            setOrders(res.data.Items);
+            setRecords(res.data.Items);
         });
     },[]);
 /*
@@ -137,8 +137,8 @@ return (
         <Router>
             <Switch>
             <Route exact path="/">
-                <OrderTable orders={orders} />
-                <Link to="/create" className="create-btn">create new order</Link>
+                <ResumeTable records={records} />
+                <Link to="/create" className="create-btn">create new record</Link>
             </Route>
             {/*
                 <Route path="/:id" children={<Order/>}>
