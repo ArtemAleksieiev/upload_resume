@@ -40,6 +40,7 @@ const App = () => {
           console.log(response.data.uploadURL.split('?')[0])
           setResumeLink(response.data.uploadURL.split('?')[0]);
           setProgress('uploaded');
+          console.log(fname, lname,resumeLink);
           Axios.post(API_ENDPOINT, { key1: fname, key2: lname, key3: resumeLink })
           
 
