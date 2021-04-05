@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import ReactFileReader from "react-file-reader";
 import Axios from 'axios';
+import Main from './Main.js';
 import './App.css';
 
 const App = () => {
   const [progress, setProgress] = useState('getUpload');
   const [errorMessage, setErrorMessage] = useState('');
   const [resumeLink, setResumeLink] = useState('');
-  const API_ENDPOINT = 'https://t39hcfjfn5.execute-api.us-east-2.amazonaws.com/uploads'
+  const API_ENDPOINT = 'https://b38z6ro243.execute-api.us-east-2.amazonaws.com/uploads'
 
   const handleFiles = async (e) => {
     console.log(e.base64)
@@ -82,6 +83,7 @@ const App = () => {
       <header className="App-header">
         <h1>Resume Upload Website</h1>
         {content()}
+        <Main />
       </header>
     </div>
   );
