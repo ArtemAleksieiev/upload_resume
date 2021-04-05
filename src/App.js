@@ -83,7 +83,7 @@ const App = () => {
       <header className="App-header">
         <h1>Resume Upload Website</h1>
         {content()}
-        <Main />
+        {/*<Main /> */}
       </header>
     </div>
   );
