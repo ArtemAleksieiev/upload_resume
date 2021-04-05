@@ -8,6 +8,8 @@ const App = () => {
   const [progress, setProgress] = useState('getUpload');
   const [errorMessage, setErrorMessage] = useState('');
   const [resumeLink, setResumeLink] = useState('');
+  const [fname, setFname] = useState('');
+  const [lname, setLname] = useState('');
   const API_ENDPOINT = 'https://b38z6ro243.execute-api.us-east-2.amazonaws.com/uploads'
 
   const handleFiles = async (e) => {
@@ -38,6 +40,9 @@ const App = () => {
           console.log(response.data.uploadURL.split('?')[0])
           setResumeLink(response.data.uploadURL.split('?')[0]);
           setProgress('uploaded');
+          Axios.post(API_ENDPOINT, { key1: fname, key2: lname, key3: resumeLink })
+          
+
         } catch (error) {
             console.log('error in upload', error);
             setErrorMessage(error.message);
@@ -53,6 +58,23 @@ const App = () => {
               <>
                 <div>
                   <div>please upload a resume</div>
+                          <div className="container">
+        <label htmlFor="fname">First Name : </label>
+        <input
+            type="text"
+            name="fname"
+            value={fname}
+            onChange={(e) => setFname(e.target.value)}
+        />
+        <label htmlFor="lname">Last Name : </label>
+        <input
+            type="text"
+            name="lname"
+            value={lname}
+            onChange={(e) => setLname(e.target.value)}
+        />
+        
+            </div>
                   <ReactFileReader fileTypes={[".pdf",".doc"]} base64={true} multipleFiles={true} handleFiles={(e)=>handleFiles(e)}>
                     <button className='btn'>Upload</button>
                   </ReactFileReader>

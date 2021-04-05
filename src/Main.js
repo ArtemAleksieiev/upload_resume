@@ -10,10 +10,6 @@ const api = axios.create({
 
 const Main = () => {
     const [records, setRecords] = useState([]);
-    const [customer, setCustomer] = useState('');
-    const [adress, setAdress] = useState('');
-    const [description, setDescription] = useState('');
-    const [phone, setPhone] = useState('');
 
     useEffect(() => {
         api.get('/').then(res => {
