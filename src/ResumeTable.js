@@ -24,7 +24,7 @@ const ResumeTable = ({records}) => {
                 <Td><a className='link' href={resume}>{resume}</a></Td>
                 <Td>
                   <Link to={`/${id}`}>
-                    <button type="button" className="btn btn-outline-primary btn-sm float-center">
+                    <button type="button" className="btn-outline-primary btn-sm float-center">
                       <p>Edit</p>
                     </button>
                   </Link>
