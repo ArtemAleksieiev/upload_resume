@@ -12,7 +12,7 @@ const ResumeTable = ({records}) => {
           <Th>First Name</Th>
           <Th>Last Name</Th>
           <Th>Resume</Th>
-          <Th style={{border: "none", background:"transparent", color:'black'}}>Edit</Th>
+          <Th>Edit</Th>
         </Tr>
       </Thead>
       <Tbody>
@@ -21,8 +21,8 @@ const ResumeTable = ({records}) => {
         return  <Tr key={id}>
                 <Td component="th" scope="row">{fname}</Td>
                 <Td>{lname}</Td>
-                <Td>{resume}</Td>
-                <Td style={{border: "none"}}>
+                <Td><a className='link' href={resume}>{resume}</a></Td>
+                <Td>
                   <Link to={`/${id}`}>
                     <button type="button" className="btn btn-outline-primary btn-sm float-center">
                       <p>Edit</p>

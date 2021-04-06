@@ -37,13 +37,9 @@ const App = () => {
             body: blobData
           })
           console.log('Result: ', result)
-          console.log(response.data.uploadURL.split('?')[0])
           setResumeLink(response.data.uploadURL.split('?')[0]);
           setProgress('uploaded');
-          console.log(fname, lname,resumeLink);
-          Axios.post(API_ENDPOINT, { key1: fname, key2: lname, key3: resumeLink })
-          
-
+          Axios.post(API_ENDPOINT, { key1: fname, key2: lname, key3: response.data.uploadURL.split('?')[0] })
         } catch (error) {
             console.log('error in upload', error);
             setErrorMessage(error.message);
@@ -58,22 +54,26 @@ const App = () => {
             return (
               <>
                 <div>
-                  <div>please upload a resume</div>
+                  <div>Please write your name and upload a resume</div>
                           <div className="container">
-        <label htmlFor="fname">First Name : </label>
+        <form className='w3-container'>
+        <label className='w3-text-blue' htmlFor="fname">First Name : </label>
         <input
+            className='w3-input w3-border'
             type="text"
             name="fname"
             value={fname}
             onChange={(e) => setFname(e.target.value)}
         />
-        <label htmlFor="lname">Last Name : </label>
+        <label className='w3-text-blue' htmlFor="lname">  Last Name : </label>
         <input
+            className='w3-input w3-border'
             type="text"
             name="lname"
             value={lname}
             onChange={(e) => setLname(e.target.value)}
         />
+        </form>
         
             </div>
                   <ReactFileReader fileTypes={[".pdf",".doc"]} base64={true} multipleFiles={true} handleFiles={(e)=>handleFiles(e)}>
