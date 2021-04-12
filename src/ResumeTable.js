@@ -21,7 +21,7 @@ const ResumeTable = ({records}) => {
         return  <Tr key={id}>
                 <Td component="th" scope="row">{fname}</Td>
                 <Td>{lname}</Td>
-                <Td><a className='link' href={resume}>{resume}</a></Td>
+                <Td><a className='link' href={resume} target="_blank">{resume}</a></Td>
                 <Td>
                   <Link to={`/${id}`}>
                     <button type="button" className="btn-outline-primary btn-sm float-center">
