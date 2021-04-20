@@ -5,7 +5,7 @@ import ResumeTable from './ResumeTable';
 
 
 const api = axios.create({
-    baseURL: 'https://b38z6ro243.execute-api.us-east-2.amazonaws.com'
+    baseURL: process.env.REACT_APP_baseURL
 })
 
 const Main = () => {

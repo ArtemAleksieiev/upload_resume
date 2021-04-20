@@ -7,8 +7,7 @@ import './App.css';
 const App = () => {
   const [progress, setProgress] = useState('getUpload');
   const [errorMessage, setErrorMessage] = useState('');
-  const API_ENDPOINT = 'https://b38z6ro243.execute-api.us-east-2.amazonaws.com/uploads'
-
+  
   const handleFiles = async (e) => {
     setProgress('uploading');
     console.log('Upload clicked');
@@ -17,7 +16,7 @@ const App = () => {
           // Get the presigned URL
           const response = await Axios({
           method: 'GET',
-          url: API_ENDPOINT
+          url: process.env.REACT_APP_API_ENDPOINT
           });
           console.log('ResponseURL: ', response.data.uploadURL)
           let binary = atob(e.base64[file].split(',')[1])
