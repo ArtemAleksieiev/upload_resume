@@ -26,7 +26,7 @@ const ResumeTable = ({records}) => {
                 <Td>{lname}</Td>
                 <Td>{phone}</Td>
                 <Td>{email}</Td>
-                <Td>{skills.map(item => <p>{item}</p>)}</Td>
+                <Td>{skills.map(item => <p key={Math.random()}>{item}</p>)}</Td>
                 
                 <Td><a className='link' href={resume} target="_blank">{resume}</a></Td>
                 <Td>
