@@ -5,6 +5,7 @@ import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 //import { BiEdit } from 'react-icons/bi';
 
 const ResumeTable = ({records}) => {
+  
   return (
     <Table>
       <Thead>
@@ -20,12 +21,15 @@ const ResumeTable = ({records}) => {
       </Thead>
       <Tbody>
         {records.map((record) => {
+        
         const { id, fname, lname, phone, email, skills, resume } = record
+        
         return  <Tr key={id}>
                 <Td component="th" scope="row">{fname}</Td>
                 <Td>{lname}</Td>
                 <Td>{phone}</Td>
                 <Td>{email}</Td>
+
                 <Td>{skills && skills.map(item => <p key={Math.random()}>{item}</p>)}</Td>
                 
                 <Td><a className='link' href={resume} target="_blank">{resume}</a></Td>
