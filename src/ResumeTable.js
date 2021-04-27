@@ -11,16 +11,23 @@ const ResumeTable = ({records}) => {
         <Tr>
           <Th>First Name</Th>
           <Th>Last Name</Th>
+          <Th>Phone</Th>
+          <Th>Email</Th>
+          <Th>Skills</Th>
           <Th>Resume</Th>
           <Th>Edit</Th>
         </Tr>
       </Thead>
       <Tbody>
         {records.map((record) => {
-        const { id, fname, lname, resume } = record
+        const { id, fname, lname, phone, email, skills, resume } = record
         return  <Tr key={id}>
                 <Td component="th" scope="row">{fname}</Td>
                 <Td>{lname}</Td>
+                <Td>{phone}</Td>
+                <Td>{email}</Td>
+                <Td>{skills.map(item => <p>{item}</p>)}</Td>
+                
                 <Td><a className='link' href={resume} target="_blank">{resume}</a></Td>
                 <Td>
                   <Link to={`/${id}`}>

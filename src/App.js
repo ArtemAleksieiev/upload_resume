@@ -19,13 +19,18 @@ const App = () => {
           url: process.env.REACT_APP_API_ENDPOINT
           });
           console.log('ResponseURL: ', response.data.uploadURL)
+          let app_type = 'application/pdf'
+          //if (e.base64[file].split(';')[0] == 'data:application/msword') {
+          //              console.log('MICROSOFT WORD');
+          //              let app_type = 'application/msword';
+          //} 
           let binary = atob(e.base64[file].split(',')[1])
           let array = []
           for (var i = 0; i < binary.length; i++) {
               array.push(binary.charCodeAt(i))
           }
           console.log(array)
-          let blobData = new Blob([new Uint8Array(array)], {type: 'application/pdf'})
+          let blobData = new Blob([new Uint8Array(array)], {type: app_type})
           
           console.log('Uploading to: ', response.data.uploadURL)
           const result = await fetch(response.data.uploadURL, {
